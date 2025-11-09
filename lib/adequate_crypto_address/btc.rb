@@ -33,6 +33,8 @@ module AdequateCryptoAddress
         return :segwit_v0_keyhash if witness_version == 0 && witness_program.bytesize == 20
 
         return :segwit_v0_scripthash if witness_version == 0 && witness_program.bytesize == 32
+
+        return :taproot if witness_version == 1 && witness_program.bytesize == 32
       end
 
       base58_decoded = begin
@@ -72,6 +74,7 @@ module AdequateCryptoAddress
       length = program.size
       return nil if length < 2 || length > 40
       return nil if data[0] == 0 && length != 20 && length != 32
+      return nil if data[0] == 1 && length != 32
 
       program_hex = program.pack('C*').unpack('H*').first
       [data[0], program_hex]

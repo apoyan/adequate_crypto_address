@@ -29,7 +29,12 @@ RSpec.describe(AdequateCryptoAddress) do
         expect(described_class).to be_valid('bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq', 'bitcoin')
         expect(described_class).to be_valid('bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq', 'bitcoin', :segwit_v0_keyhash)
         expect(described_class).to be_valid('bc1qc7slrfxkknqcq2jevvvkdgvrt8080852dfjewde450xdlk4ugp7szw5tk9', 'BTC')
-        expect(described_class).to be_valid('bc1qc7slrfxkknqcq2jevvvkdgvrt8080852dfjewde450xdlk4ugp7szw5tk9', 'bitcoin', 'segwit_v0_scripthash')
+        expect(described_class).to be_valid('bc1qc7slrfxkknqcq2jevvvkdgvrt8080852dfjewde450xdlk4ugp7szw5tk9', 'bitcoin', :segwit_v0_scripthash)
+      end
+
+      it 'validates taproot addresses' do
+        expect(described_class).to be_valid('bc1p5cyxnuxmeuwuvkwfem96lqzszd02n6xdcjrs20cac6yqjjwudpxqkedrcr', 'bitcoin')
+        expect(described_class).to be_valid('bc1p5cyxnuxmeuwuvkwfem96lqzszd02n6xdcjrs20cac6yqjjwudpxqkedrcr', 'BTC', :taproot)
       end
 
       it 'validates wrong addresses' do
@@ -46,6 +51,8 @@ RSpec.describe(AdequateCryptoAddress) do
         expect(described_class).not_to be_valid('bc1zw508d6qejxtdg4y5r3zarvaryvqyzf3du', 'bitcoin')
         expect(described_class).not_to be_valid('tb1qrp33g0q5c5txsp9arysrx4k6zdkfs4nce4xj0gdcccefvpysxf3pjxtptv', 'Bitcoin')
         expect(described_class).not_to be_valid('bc1gmk9yu', 'bitcoin')
+        expect(described_class).not_to be_valid('bc1p5d7rjq7g6rdk2yhzks9smlqfpuecypus6uf4e9qrsssrwc09', 'bitcoin') # invalid checksum
+        expect(described_class).not_to be_valid('bc1p5d7rjq7g6rdk2yhzks9smlqfpuecypus6uf4e9qrsssrwc0', 'bitcoin') # too short
       end
     end
 

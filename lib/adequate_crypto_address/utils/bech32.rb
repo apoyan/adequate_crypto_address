@@ -121,7 +121,9 @@ module AdequateCryptoAddress
           end
 
           return nil if have_lower && have_upper
-          return nil if chk != 1
+          
+          # Accept both Bech32 (chk == 1) and Bech32m (chk == 0x2bc830a3)
+          return nil unless chk == 1 || chk == 0x2bc830a3
 
           [hrp.pack('C*'), data]
         end
