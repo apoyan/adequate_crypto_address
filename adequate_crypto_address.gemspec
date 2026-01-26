@@ -9,11 +9,12 @@ Gem::Specification.new do |spec|
   spec.version       = AdequateCryptoAddress::VERSION
   spec.authors       = ['vtm']
 
-  spec.summary     = 'A Ruby Library for dealing with validation cryptocurrency adresses.'
-  spec.description = 'A Ruby Library for dealing with validation cryptocurrency adresses.'
+  spec.summary     = 'Ruby helpers for validating cryptocurrency addresses.'
+  spec.description = 'Provides Ruby helpers to validate cryptocurrency addresses across common chains.'
   spec.homepage = 'https://github.com/vtm9/adequate_crypto_address'
 
   spec.license = 'MIT'
+  spec.required_ruby_version = '>= 3.0'
   spec.files         = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
   spec.require_paths = ['lib']
 
