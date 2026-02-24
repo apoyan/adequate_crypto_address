@@ -176,6 +176,8 @@ RSpec.describe(AdequateCryptoAddress) do
         expect(described_class).to be_valid('2MxKEf2su6FGAUfCEAHreGFQvEYrfYNHvL7', 'LTC', :test)
         expect(described_class).to be_valid('QW2SvwjaJU8LD6GSmtm1PHnBG2xPuxwZFy', 'LTC', :test)
         expect(described_class).to be_valid('QjpzxpbLp5pCGsCczMbfh1uhC3P89QZavY', 'LTC', :test)
+        expect(described_class).to be_valid('tltc1pxdvk48nchp45mcg8pcht5ss8ladtxnl7mkr96lrw93q79g407ufqmelwuu', 'LTC', :test)
+        expect(described_class).to be_valid('tltc1pxdvk48nchp45mcg8pcht5ss8ladtxnl7mkr96lrw93q79g407ufqmelwuu', 'LTC')
       end
 
       it 'validates wrong addresses' do
@@ -183,6 +185,8 @@ RSpec.describe(AdequateCryptoAddress) do
         expect(described_class).not_to be_valid('t1Y9yhDa5XEjgfnTgZoKddeSiEN1aoLkQxq', :zcash)
         expect(described_class).not_to be_valid('t3Yz22vK5z2LcKEdg16Yv4FFneEL1zg9ojd', :ZEC)
         expect(described_class).not_to be_valid('t2YNzUUx8mWBCRYPRezvA363EYXyEpHokyi', :zcash, :test)
+        expect(described_class).not_to be_valid('tltc1pxdvk48nchp45mcg8pcht5ss8ladtxnl7mkr96lrw93q79g407ufqmelwuu', 'LTC', :prod)
+        expect(described_class).not_to be_valid('tltc1Pxdvk48nchp45mcg8pcht5ss8ladtxnl7mkr96lrw93q79g407ufqmelwuu', 'LTC')
       end
     end
 
