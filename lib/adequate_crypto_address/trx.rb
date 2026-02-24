@@ -10,8 +10,8 @@ module AdequateCryptoAddress
     BASE58_INDEX = BASE58_ALPHABET.chars.each_with_index.to_h.freeze
 
     PREFIX_BY_TYPE = {
-      prod:   0x41, # mainnet
-      test:   0xA0, # testnet (часто так в java-tron tooling)
+      prod:   0x41,
+      test:   0xA0,
       testnet: 0xA0
     }.freeze
 
@@ -43,11 +43,10 @@ module AdequateCryptoAddress
       nil
     end
 
-    # Возвращает payload (21 байт для TRX) или nil
     def decode_base58check_payload
       raw = base58_decode(address)
       return nil unless raw
-      return nil if raw.bytesize < 5 # минимум 1 байт payload + 4 байта checksum
+      return nil if raw.bytesize < 5
 
       payload  = raw.byteslice(0, raw.bytesize - 4)
       checksum = raw.byteslice(raw.bytesize - 4, 4)
@@ -62,7 +61,6 @@ module AdequateCryptoAddress
       Digest::SHA256.digest(Digest::SHA256.digest(bytes))
     end
 
-    # Base58 decode -> bytes (String ASCII-8BIT)
     def base58_decode(str)
       return nil if str.nil? || str.empty?
 
