@@ -221,6 +221,22 @@ RSpec.describe(AdequateCryptoAddress) do
         expect(described_class).not_to be_valid('NOT_VALID_4BKnGLZNZ5pjpXCZedGfVQjpXCZedGfVQjp', :xmr)
       end
     end
+
+    context 'Tron' do
+      it 'validates addresses' do
+        # mainnet
+        expect(described_class).to be_valid('TNPeeaaFB7K9cmo4uQpcU32zGK8G1NYqeL', :trx)
+        expect(described_class).to be_valid('TNPeeaaFB7K9cmo4uQpcU32zGK8G1NYqeL', 'TRX')
+        expect(described_class).to be_valid('TNPeeaaFB7K9cmo4uQpcU32zGK8G1NYqeL', 'trx')
+        expect(described_class).to be_valid('TNPeeaaFB7K9cmo4uQpcU32zGK8G1NYqeL', 'Trx')
+      end
+
+      it 'validates wrong addresses' do
+        expect(described_class).not_to be_valid('wrong', :trx)
+        expect(described_class).not_to be_valid('TNPeeaaFB7K9cmo4uQpcU32zGK8G1NYqeX', :trx)
+        expect(described_class).not_to be_valid('TNPeeaaFB7K9cmo4uQpcU32zGK8G1NYqeL', :trx, :testnet)
+      end
+    end
   end
 
   describe '.address' do

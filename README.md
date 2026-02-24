@@ -50,6 +50,7 @@ gem install adequate_crypto_address
 * Ripple/XRP, `'ripple'` or `'XRP'`
 * Toncoin, `'TON'`
 * Monero/XRM, `'monero'`
+* Tron/TRX, `'TRX'`
 
 ## Usage
 
