@@ -15,6 +15,7 @@ require 'adequate_crypto_address/ton'
 require 'adequate_crypto_address/xmr'
 require 'adequate_crypto_address/bsc'
 require 'adequate_crypto_address/kaia'
+require "adequate_crypto_address/trx"
 
 module AdequateCryptoAddress
   class UnknownCurrency < StandardError; end
